@@ -1,0 +1,49 @@
+package startertests;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+
+import java.util.ArrayList;
+
+
+
+@RunWith(JUnit4.class)
+public class MyFirstTestClass {
+
+    @Before
+    public void setup(){
+        System.setProperty("webdriver.chrome.driver", "C:\\QA Testing Projects\\Testproject\\chromedriver_win32/chromedriver.exe");
+    }
+
+
+
+
+    @Test
+    public void myFirstTestFunction() {
+       ArrayList<String> numberArray = new ArrayList<>();
+       numberArray.add("one"); // 0
+       numberArray.add("two"); // 1
+       numberArray.add("three"); // 2
+       numberArray.add("four"); // 3
+       numberArray.add("five"); // 4
+       numberArray.add("six"); // 5
+       numberArray.add("seven"); // 6
+       numberArray.add("eight"); // 7
+       numberArray.add("nine"); // 8
+       numberArray.add("ten"); // 9
+
+      for (int i = 0; i < 11; i++){ // for even numbers
+          if ((i) % 2 == 0) {
+              System.out.println(i + "is an even number.");
+          }
+          else{
+              System.out.println(i + "is an odd number.");
+          }
+
+
+       }
+
+
+   }

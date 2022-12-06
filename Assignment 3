@@ -1,0 +1,62 @@
+package startertests;
+
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.ArrayList;
+
+
+
+@RunWith(JUnit4.class)
+public class MyFirstTestClass {
+
+
+
+    @Test
+    public void wrongPasswordCheck(){
+        System.setProperty("webdriver.chrome.driver","C:/Users/mside/OneDrive/Desktop/chromedriver.exe");
+        ChromeDriver chromeDriver = new ChromeDriver();
+        chromeDriver.get("https://amaninja-concept2.myshopify.com/");
+        WebElement passwordField = chromeDriver.findElement(By.id("password"));
+        passwordField.sendKeys("anything11");
+        WebElement buttonEnter = chromeDriver.findElement(By.xpath("/html/body/div/div[2]/div[2]/form/button"));
+        buttonEnter.click();
+
+       String exp = "Password incorrect, please try again.";
+        WebElement getErrorMessage = chromeDriver.findElement(By.xpath("/html/body/div/div[2]/div[2]/form/div/div/div[2]/p/span[2]"));
+       String act = getErrorMessage.getText();
+
+       System.out.println("Error message is: "+ act);
+
+       Assert.assertEquals(exp,act);
+
+    }
+
+    @Test
+    public void correctPasswordCheck(){
+        System.setProperty("webdriver.chrome.driver","C:/Users/mside/OneDrive/Desktop/chromedriver.exe");
+        ChromeDriver chromeDriver = new ChromeDriver();
+        chromeDriver.get("https://amaninja-concept2.myshopify.com/");
+        WebElement passwordField = chromeDriver.findElement(By.id("password"));
+        passwordField.sendKeys("Amaninja!1");
+        WebElement buttonEnter = chromeDriver.findElement(By.xpath("/html/body/div/div[2]/div[2]/form/button"));
+        buttonEnter.click();
+
+        String exp = ("getLandingPage");
+        WebElement getLandingPage = chromeDriver.findElement(By.xpath("//*[@id=\"menu-drawer\"]/div/div/nav/ul/li[1]/a"));
+
+
+
+
+
+
+
+    }
