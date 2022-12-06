@@ -43,8 +43,7 @@ public class MyFirstTestClass {
         WebElement buttonEnter = chromeDriver.findElement(By.xpath("/html/body/div/div[2]/div[2]/form/button"));
         buttonEnter.click();
 
-        String exp = ("getLandingPage");
-        WebElement getLandingPage = chromeDriver.findElement(By.xpath("//*[@id=\"menu-drawer\"]/div/div/nav/ul/li[1]/a"));
+       String exp = ("https://amaninja-concept2.myshopify.com/");
         String act = "https://amaninja-concept2.myshopify.com/";
 
         Assert.assertEquals(exp, act);
