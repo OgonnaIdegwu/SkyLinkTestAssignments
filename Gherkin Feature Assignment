@@ -1,0 +1,44 @@
+package startertests;
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+@RunWith(JUnit4.class)
+public class MyFirstTestClass {
+    ChromeDriver chromeDriver = new ChromeDriver();
+
+    @Given("My browser is up and running and website is loaded")
+    public void my_browser_is_up_and_running_and_website_is_loaded() {
+        System.setProperty("webdriver.chrome.driver","C:/Users/mside/OneDrive/Desktop/chromedriver.exe");
+        chromeDriver.get("https://amaninja-concept2.myshopify.com/");
+    }
+    @Then("Enter Password {string}")
+    public void enter_password(String string) {
+        WebElement passwordField = chromeDriver.findElement(By.id("password"));
+        passwordField.sendKeys("Amaninja!1");
+        WebElement buttonEnter = chromeDriver.findElement(By.xpath("/html/body/div/div[2]/div[2]/form/button"));
+        buttonEnter.click();
+    }
+    @Then("validate successful login")
+    public void validate_successful_login() {
+         String actualUrl = "https://amaninja-concept2.myshopify.com/";
+         String expectedUrl = chromeDriver.getCurrentUrl();
+
+         Assert.assertEquals(actualUrl,expectedUrl);
+    }
+    @After
+    public void exitChrome(){
+        chromeDriver.quit();
+    }
+
+}
